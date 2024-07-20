@@ -64,6 +64,11 @@ func TestEmptyLinkedListAdd(t *testing.T) {
 
 	linkedList.Add(*nodeToAdd)
 
+	linkedList.Add(*&Node{
+		value: 6777,
+		next:  nil,
+	})
+
 	if linkedList.head == nil {
 		t.Error("Failed to add node to empty linked list")
 	}
@@ -106,14 +111,11 @@ func TestLinkedListWithOnlyHeadRemoveTail(t *testing.T) {
 		head: node,
 	}
 
-	linkedList.PrintLinkedList()
 	linkedList.RemoveTail()
 
 	if linkedList.head != nil {
 		t.Error("Failed to remove head")
 	}
-
-	linkedList.PrintLinkedList()
 }
 
 func TestLinkedListRemoveHead(t *testing.T) {
